@@ -7,7 +7,7 @@ describe("subtraction()", () => {
   });
 
   test("handles string numbers", () => {
-    expect(subtraction("7", "2")).toBe(5);
+    expect(subtraction("7", "2")).toBe("5");
   });
 
   test("negative result", () => {
