@@ -37,10 +37,9 @@ pipeline {
                 )]) {
                     bat """
                     plink -ssh %SSH_USER%@%IP_SERVER% -pw %SSH_PASS% ^
-                    "docker pull %DOCKER_IMAGE%:%DOCKER_TAG% && ^
-                     docker stop myapp || true && ^
-                     docker rm myapp || true && ^
-                     docker run -d -p 80:3000 --name myapp %DOCKER_IMAGE%:%DOCKER_TAG%"
+                    "docker pull %DOCKER_IMAGE%:%DOCKER_TAG% && \
+                    docker rm -f myapp || true && \
+                    docker run -d -p 80:3000 --name myapp %DOCKER_IMAGE%:%DOCKER_TAG%"
                     """
                 }
             }
