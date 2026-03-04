@@ -29,13 +29,14 @@ pipeline {
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    bat """
+                    bat '''
+                    @echo off
                     echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
-                    """
+                    '''
                 }
             }
         }
-
+        
         stage('Push Image') {
             steps {
                 bat "docker push %DOCKER_IMAGE%:%DOCKER_TAG%"
